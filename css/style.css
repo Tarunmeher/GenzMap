@@ -1,0 +1,110 @@
+body { 
+    margin: 0; 
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    overflow: hidden;
+}
+#map { 
+    width: 100%; 
+    height: 100vh;
+}
+.genz-search-container{
+    position: absolute;
+    top:10px;
+    left:10px;
+    padding:5px;
+    box-shadow: 0px 0px 10px rgb(174, 174, 174);
+    background-color: white;
+    border-radius: 20px;
+}
+.genz-search-container button{
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+.genz-search-container input{
+    font-size: 1rem;
+    padding: 5px;
+    border: none;
+    width: 200px;
+}
+.genz-search-container input:focus{
+    outline:none;
+}
+
+.genz-zoom-button-container{
+	padding:4px 3px;
+	top:10px;
+	right:10px;
+	position: absolute;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 20px rgb(174, 174, 174);
+    border-radius: 5px;
+    display: grid;
+    gap:3px;
+}
+.genz-zoom-buttons{
+	padding:0px 4px;
+    background-color: #ffffff;
+	font-size: 1.5rem;
+	cursor: pointer;
+    border: none;
+    border-radius: 2px;
+}
+
+.genz-feature-button-container{
+	top:85px;
+	right:10px;
+	position: absolute;
+    display: grid;
+    gap:7px;
+}
+.genz-feature-button{
+    border-radius: 10px;
+    background-color: #ffffff;
+    padding:8px 10px;
+    font-size: 1.2rem;
+    box-shadow: 0px 0px 20px rgb(174, 174, 174);
+    cursor: pointer;
+    border: none;
+}
+
+.genz-zoom-buttons:hover, .genz-feature-button:hover{
+	background-color: #f3f3f3;
+}
+
+#genz-search-results{
+    position: absolute;
+    top: 60px;
+    left: 15px;
+    width: 345px;
+    max-height: 400px;
+    overflow: auto;
+    background-color: white;
+    box-shadow: 0px 0px 5px gray;
+    padding: 10px;
+    display: none;
+
+}
+#genz-search-results .dropdown-item{
+    padding: 5px;
+}
+#genz-search-results .dropdown-item:hover{
+    cursor: pointer;
+    background-color: #efefef;
+}
+
+
+.genz-utility-button-container{
+	top:225px;
+	right:10px;
+	position: absolute;
+    /* display: grid; */
+    gap:7px;
+    display: none;
+}
+
+.genz-button-active{
+    color:rgb(5, 191, 233);
+}
