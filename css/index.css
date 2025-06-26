@@ -1,0 +1,100 @@
+.app-feature-btn{
+    position: absolute;
+    top: 10px;
+    right: 60px;
+    padding: 8px 10px;
+    font-size: 1.5rem;
+    background-color: #ffffff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgb(174, 174, 174);
+    /* text-shadow: 0px 0px 5px white; */
+}
+.app-feature-btn:hover{
+    background-color: #f3f3f3;
+}
+.app-features-container{
+    position: absolute;
+    top: 60px;
+    right: 60px;
+    width: 250px;
+    min-height: 50px;
+    max-height: 400px;
+    padding: 8px 10px;
+    background-color: #ffffff;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgb(174, 174, 174);
+    overflow-y: auto;
+    display: none;
+}
+.app-features-collapsible {
+    background-color: #ffffff;
+    cursor: pointer;
+    padding: 8px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    font-size: 15px;
+    /* border-top: 1px solid black; */
+    /* border-left: 4px solid black; */
+    transition: border-bottom 0.3s ease;
+    /* transition: background-color 0.3s ease; */
+    box-shadow: 0px 0px 10px rgb(203, 203, 203);
+    margin-top: 5px;
+}  
+.app-features-collapsible:hover{
+    background-color: whitesmoke;
+}
+.app-features-active{
+    box-shadow: 0px 0px 10px rgb(188, 188, 188);
+    border-bottom: none;
+}  
+.app-features-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: #ffffff;
+    padding: 2px 5px;
+    box-shadow:
+    inset 0 5px 8px -5px rgba(0, 0, 0, 0.1),   /* Top */
+    inset 5px 0 8px -5px rgba(0, 0, 0, 0.1),   /* Left */
+    inset -5px 0 8px -5px rgba(0, 0, 0, 0.1);  /* Right */
+    overflow-y: auto;
+}
+.app-features-content p {
+    margin: 15px 0;
+}
+
+
+.group-toggle {
+  background-color: #ffffff;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  padding: 7px 5px;
+  border-top: 1px solid #ccc;
+  outline: none;
+  display: flex;
+  font-size: 0.9em;
+}
+.group-toggle input{
+    margin-top: 1px;
+}
+
+.group-content {
+  padding: 2px 15px;
+  display: none;
+  border-bottom: 1px solid #ddd;
+  background-color: rgb(237 237 237);
+}
+
+.group-content label {
+    font-size: 0.9em;
+  display: block;
+  margin: 5px 0;
+}

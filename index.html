@@ -4,12 +4,60 @@
 	<meta charset="utf-8">
 	<title>GenesysMapClone</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-    <link href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" rel="stylesheet" />
+		<link href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" rel="stylesheet" />
 	<script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 	<div id="map"></div>
+	<button class="app-feature-btn" id="tools-btn"><i class="bi bi-menu-button-fill"></i></button>
+	<div class="app-features-container" id="app-features-container">
+        <button class="app-features-collapsible">
+            <i class="bi bi-card-list"></i> &nbsp; Table of Content
+        </button>
+        <div class="app-features-content">
+        	<div class="toc-section" id="toc-section">
+                <!-- Group 2 -->
+                <button class="group-toggle">
+                    <input type="checkbox" name="" id=""> &nbsp; Survey Data</button>
+                <div class="group-content">
+                  <label><input type="checkbox" checked> FTTH Points</label>
+                  <label><input type="checkbox"> WIFI Points</label>
+                </div>
+
+                <!-- Group 3 -->
+                <button class="group-toggle">
+                    <input type="checkbox" name="" id=""> &nbsp; Grid Data</button>
+                <div class="group-content">
+                  <label><input type="checkbox"> Grid</label>
+                  <label><input type="checkbox" checked> GP Points</label>
+                </div>
+            </div>
+        </div>
+        
+        <button class="app-features-collapsible">
+            <i class="bi bi-rulers"></i> &nbsp; Measurement
+        </button>
+        <div class="app-features-content">
+        	<p>Measurement Section</p>
+        </div>
+
+        <button class="app-features-collapsible">
+            <i class="bi bi-radar"></i> &nbsp; Buffer Search
+        </button>
+        <div class="app-features-content">
+        	<p>Buffer Section</p>
+        </div>
+
+        <button class="app-features-collapsible">
+            <i class="bi bi-file-earmark-medical"></i> &nbsp; Search By Attribute
+        </button>
+        <div class="app-features-content">
+        	<p>Search By attribute Section</p>
+        </div>
+	</div>
+	<!-- <button class="app-features"><i class="bi bi-grid-3x3-gap-fill"></i></button> -->
 	<script src="scripts/main.js" type="module" defer></script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 import { CONFIG } from "../config.js";
 import { MapsTool } from "./MapsTool.js";
 import { CommonJS } from './CommonJS.js';
+import './index.js';
 const cmjs = new CommonJS();
 
 export const global = {
