@@ -35,3 +35,10 @@ document.getElementById('tools-btn').addEventListener('click', ()=>{
         container.style.display='none';
     }    
 });
+
+// let placeBtns = document.getElementsByClassName('place');
+// for(let i=0;i<placeBtns.length;i++){
+//   placeBtns[i].onclick = (evt) =>{
+//     placeBtns[i].classList.toggle('genz-button-active')
+//   }
+// }

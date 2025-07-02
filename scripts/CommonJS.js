@@ -1,5 +1,5 @@
 import { global } from './main.js';
-import { CONFIG } from '../config.js';
+import { CONFIG } from '../mapinfo.js';
 export class CommonJS{
     constructor(){
 
@@ -122,5 +122,127 @@ export class CommonJS{
             return `${CONFIG.AUTOCOMPLETE_URL}?api_key=${CONFIG.API_KEY}&type=${type}&text=${encodeURIComponent(searchText)}&focus.point.lat=${ulat}&focus.point.lon=${ulon}`;
           }
         }        
+    }
+
+    searchLongLat(coordSearch, searchResults, long, lat) {
+        searchResults.style.display = 'none';
+
+        if (coordSearch) {
+            const latitude = parseFloat(lat.value.trim());
+            const longitude = parseFloat(long.value.trim());
+
+            if (!isNaN(latitude) && !isNaN(longitude)) {
+                this.reverseGeocode(latitude, longitude)
+                    .then(feature => {
+                        const name = feature.properties.name || 'Custom Location';
+                        const title = feature.properties.label || 'Your Custom Marker';
+                        if (global.searchMarker) {
+                            global.searchMarker.remove();
+                        }
+
+                        let popupContent = `
+                          <div class="popup-content">
+                              <b>${name}</b><br>
+                              ${title}<br>
+                              Lat: ${longitude}, Lng: ${latitude}<br><br>
+                              <button class="popup-button" onclick="handleSearchDirection(${longitude}, ${latitude})">Get Direction</button>
+                          </div>`;
+
+                        global.searchMarker = new maplibregl.Marker()
+                            .setLngLat([longitude, latitude])
+                            .setPopup(new maplibregl.Popup().setHTML(popupContent))
+                            .addTo(map);
+
+                        global.searchMarker.getPopup().addTo(map);
+
+                        map.flyTo({
+                            center: [longitude, latitude],
+                            zoom: 20,
+                            pitch: 0
+                        });
+                    })
+                    .catch(error => alert(error.message));
+            } else {
+                alert('Please enter valid latitude and longitude values.');
+            }
+        } else {
+            const searchText = searchInput.value.trim();
+            const digipinRegex = /^[A-Z0-9]{3}-[A-Z0-9]{3}-[A-Z0-9]{4}$/i;
+
+            if (searchText.length >= 3) {
+
+                if (digipinRegex.test(searchText)) {
+                    const decodeURL = `${DIGIPIN}/decode?digipin=${encodeURIComponent(searchText)}&api_key=${API_KEY}`;
+
+                    fetch(decodeURL)
+                        .then(response => {
+                            if (response.ok) {
+                                return response.json();
+                            } else {
+                                throw new Error('DIGIPIN not found');
+                            }
+                        })
+                        .then(data => {
+                            removeAllMarkers();
+                            addMarker(data.longitude, data.latitude, searchText, 'DIGIPIN Location');
+                            map.flyTo({
+                                center: [data.longitude, data.latitude],
+                                zoom: 12,
+                                pitch: 0
+                            });
+                        })
+                        .catch(() => {
+                            const searchURL = `${GEO_SEARCH_URL}?api_key=${API_KEY}&text=${encodeURIComponent(searchText)}`;
+                            fetch(searchURL)
+                                .then(response => response.json())
+                                .then(data => {
+                                    removeAllMarkers();
+                                    data.features.forEach(feature => {
+                                        const coords = feature.geometry.coordinates;
+                                        const name = feature.properties.name;
+                                        const label = feature.properties.label;
+                                        addMarker(coords[0], coords[1], name, label);
+                                    });
+                                    if (data.features.length > 0) {
+                                        const firstFeature = data.features[0];
+                                        const firstCoords = firstFeature.geometry.coordinates;
+                                        map.flyTo({
+                                            center: [firstCoords[0], firstCoords[1]],
+                                            zoom: 12,
+                                            pitch: 0
+                                        });
+                                    }
+                                })
+                                .catch(error => console.error('Error fetching data:', error));
+                        });
+
+                } else {
+                    const searchURL = `${GEO_SEARCH_URL}?api_key=${API_KEY}&text=${encodeURIComponent(searchText)}`;
+                    fetch(searchURL)
+                        .then(response => response.json())
+                        .then(data => {
+                            removeAllMarkers();
+                            data.features.forEach(feature => {
+                                const coords = feature.geometry.coordinates;
+                                const name = feature.properties.name;
+                                const label = feature.properties.label;
+                                addMarker(coords[0], coords[1], name, label);
+                            });
+                            if (data.features.length > 0) {
+                                const firstFeature = data.features[0];
+                                const firstCoords = firstFeature.geometry.coordinates;
+                                map.flyTo({
+                                    center: [firstCoords[0], firstCoords[1]],
+                                    zoom: 12,
+                                    pitch: 0
+                                });
+                            }
+                        })
+                        .catch(error => console.error('Error fetching data:', error));
+                }
+            } else {
+                alert('Please enter a valid search query.');
+            }
+        }
     }
 }

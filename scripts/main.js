@@ -1,8 +1,10 @@
-import { CONFIG } from "../config.js";
+import { CONFIG } from "../mapinfo.js";
 import { MapsTool } from "./MapsTool.js";
 import { CommonJS } from './CommonJS.js';
-import './index.js';
+import '../app/index.js';
+import { App } from '../app/app.js';
 const cmjs = new CommonJS();
+const app = new App();
 
 export const global = {
   debounceTimer: null,
@@ -10,7 +12,9 @@ export const global = {
   map: null,
   marker: null,
   selectedCoords: null,
-  currentMapType:'street'
+  currentMapType:'street',
+  measurementActive:false,
+  searchMarker:null
 };
 
 let ulat = 0,
@@ -24,7 +28,30 @@ const map = new maplibregl.Map({
   zoom: 12,
 });
 
+map.on('load', () => {
+  // app.addGroupLayers(map);
+  // global.measurementActive = true;
+  // const Draw = new MapboxDraw({
+  //   displayControlsDefault: false,
+  //   controls: {
+  //     polygon: true,
+  //     line_string: true,
+  //     trash: true
+  //   }
+  // });
+  // map.addControl(Draw, 'top-right');
+
+  // map.on('draw.create', app.updateMeasurements(Draw));
+  // map.on('draw.update', app.updateMeasurements(Draw));
+
+});
+
+
+
 map.on("click", (e) => {
+  if(global.measurementActive){
+    return;
+  }
   const lngLat = e.lngLat;
   cmjs.reverseGeocode(lngLat.lat, lngLat.lng)
     .then((feature) => {
@@ -75,10 +102,13 @@ const mt = new MapsTool();
 const {
   advanced_search_button,
   input_search_text,
+  clear_search_button,
   latlon_search_button,
   search_button,
   direction_search_button,
   searchResults,
+  input_search_lat,
+  input_search_long
 } = mt.addSearchBar(map);
 
 mt.addZoomButtons(map);
@@ -127,13 +157,13 @@ input_search_text.onkeyup = (evt) => {
   const searchText = evt.target.value.trim();
   searchResults.innerHTML = "";
   // debounce(() => {
-  const selectedCheckbox = false;
-  const isToggleOn = false;
-  
+  const selectedCheckbox = document.querySelector('.genz-place-buttons input[type="checkbox"]:checked');;
+  const isToggleOn = advanced_search_button.classList.contains('genz-button-active');
   const searchURL = cmjs.createAutoCompleteURL(isToggleOn, selectedCheckbox, searchText, ulat, ulon);
   
 
   if (searchText.length > 0) {
+    clear_search_button.style.display='inline-block';
     const { signal } = cmjs.getAbortController();
     fetch(searchURL, { signal })
       .then((response) => response.json())
@@ -149,11 +179,20 @@ input_search_text.onkeyup = (evt) => {
           console.error("Error fetching data:", error);
         }
       });
+      
   } else {
+    searchResults.innerHTML='';
     searchResults.style.display = "none";
+    clear_search_button.style.display='none';
   }
   // });
 };
+
+search_button.onclick = () =>{
+  if(latlon_search_button.classList.contains('genz-button-active')){
+    cmjs.searchLongLat(true, searchResults, input_search_long, input_search_lat);
+  }
+}
 
 if ("geolocation" in navigator) {
     navigator.geolocation.getCurrentPosition(

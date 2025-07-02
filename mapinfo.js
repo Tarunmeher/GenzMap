@@ -4,6 +4,7 @@ export const CONFIG = {
     "SATELLITE_STYLE_URL": "https://mapapi.genesysmap.com/api/v1/tiles/styles/satellite/style.json",
     "GEO_SEARCH_URL": "https://mapapi.genesysmap.com/api/v1/places/search",
     "AUTOCOMPLETE_URL": "https://mapapi.genesysmap.com/api/v1/places/autocomplete",
+    "AUTOCOMPLETE_ADV_URL": "https://mapapi.genesysmap.com/api/v1/places/autocomplete/adv",
     "REVERSE_GEOCODE_URL": "https://mapapi.genesysmap.com/api/v1/places/reverse",
     "DIRECTIONS_API_URL": "https://mapapi.genesysmap.com/demo/api/directions",
     "TRAFFIC_TILES_URL": "https://mapapi.genesysmap.com/api/v1/traffic/data",
