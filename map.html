@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>GenesysMapClone</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+		<link href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" rel="stylesheet" />
+	<script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
+    
+    <link href="https://cdn.jsdelivr.net/npm/@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<div id="map"></div>
+	<button class="app-feature-btn" id="tools-btn"><i class="bi bi-menu-button-fill"></i></button>
+	<div class="app-features-container" id="app-features-container">
+        <button class="app-features-collapsible">
+            <i class="bi bi-card-list"></i> &nbsp; Table of Content
+        </button>
+        <div class="app-features-content">
+        	<div class="toc-section" id="toc-section">
+                <!-- Group 2 -->
+                <button class="group-toggle">
+                    <input type="checkbox" name="" id=""> &nbsp; Survey Data</button>
+                <div class="group-content">
+                  <label><input type="checkbox" checked> FTTH Points</label>
+                  <label><input type="checkbox"> WIFI Points</label>
+                </div>
+
+                <!-- Group 3 -->
+                <button class="group-toggle">
+                    <input type="checkbox" name="" id=""> &nbsp; Grid Data</button>
+                <div class="group-content">
+                  <label><input type="checkbox"> Grid</label>
+                  <label><input type="checkbox" checked> GP Points</label>
+                </div>
+            </div>
+        </div>
+        
+        <button class="app-features-collapsible">
+            <i class="bi bi-rulers"></i> &nbsp; Measurement
+        </button>
+        <div class="app-features-content">
+        	<p>Measurement Section</p>
+        </div>
+
+        <button class="app-features-collapsible">
+            <i class="bi bi-radar"></i> &nbsp; Buffer Search
+        </button>
+        <div class="app-features-content">
+        	<p>Buffer Section</p>
+        </div>
+
+        <button class="app-features-collapsible">
+            <i class="bi bi-file-earmark-medical"></i> &nbsp; Search By Attribute
+        </button>
+        <div class="app-features-content">
+        	<p>Search By attribute Section</p>
+        </div>
+	</div>
+
+    <div class="genz-place-buttons" id="genz-places-search">
+            <input type="checkbox" id="accommodation" name="Hotel" value="accommodation">
+            <label for="accommodation" class="place">
+                    <i class="bi bi-buildings-fill icon"></i> Hotels
+            </label>
+            <input type="checkbox" id="food" name="Restaurants" value="food">
+            <label for="food" class="place">
+                    <i class="bi bi-fork-knife icon"></i> Restaurants
+            </label>
+            <input type="checkbox" id="transport:fuel" name="Petrol Pumps" value="transport:fuel">
+            <label for="transport:fuel" class="place">
+                    <i class="bi bi-fuel-pump-fill icon"></i> Petrol Pumps
+            </label>
+            <input type="checkbox" id="transport:ev" name="EV Charging" value="transport:ev">
+            <label for="transport:ev" class="place">
+                    <i class="bi bi-ev-station-fill icon"></i> EV Charging
+            </label>
+            <input type="checkbox" id="finance:atm" name="ATM" value="finance:atm">
+            <label for="finance:atm" class="place">
+                    <i class="bi bi-currency-rupee icon"></i>ATM
+            </label>
+            <input type="checkbox" id="retail" name="Shopping" value="retail">
+            <label for="retail" class="place">
+                    <i class="bi bi-cart-fill icon"></i> Shopping
+            </label>
+        </div>
+
+        <div class="direction-container" id="direction-container">
+            <div class="direction-container-header" id="direction-container-close">
+                <i class="bi bi-x-lg" ></i>
+            </div>
+            <div class="direction-type">
+                <button title="Walk"><i class="bi bi-person-walking"></i></button>
+                <button title="Two Wheeler"><i class="bi bi-bicycle"></i></button>
+                <button title="Car"><i class="bi bi-car-front"></i></button>
+                <button title="Bus"><i class="bi bi-bus-front"></i></button>
+                <button title="Truck"><i class="bi bi-truck-front"></i></button>
+            </div>
+
+            <div class="direction-inputs">
+                <br><br>
+                <div class="inputs">
+                    <input type="text" id="longitude-inputs" placeholder="Place Name">
+                    <i class="bi bi-x-lg" ></i>
+                </div>
+                <div class="inputs" style="text-align: center;">
+                    <i class="bi bi-arrow-down-up"></i>
+                </div>
+                <div class="inputs">
+                    <input type="text" id="latitude-inputs" placeholder="Place Name">
+                    <i class="bi bi-x-lg" ></i>
+                </div>
+
+                <div class="other-options">
+                    <i class="bi bi-info-circle" ></i> &nbsp; 
+                    <i class="bi bi-bezier2" ></i> &nbsp; 
+                    <i class="bi bi-crosshair" ></i> &nbsp; 
+                </div>
+            </div>
+            
+        </div>
+	<!-- <button class="app-features"><i class="bi bi-grid-3x3-gap-fill"></i></button> -->
+	<script src="scripts/main.js" type="module" defer></script>
+</body>
+</html>
