@@ -36,9 +36,40 @@ document.getElementById('tools-btn').addEventListener('click', ()=>{
     }    
 });
 
-// let placeBtns = document.getElementsByClassName('place');
-// for(let i=0;i<placeBtns.length;i++){
-//   placeBtns[i].onclick = (evt) =>{
-//     placeBtns[i].classList.toggle('genz-button-active')
-//   }
-// }
+
+let placeBtns = document.querySelectorAll('.genz-place-buttons input[type="checkbox"]');
+placeBtns.forEach(inp => {
+  inp.addEventListener('change', () => {
+    if (inp.checked) {
+      let searchInput = document.getElementById('searchInput');
+      searchInput.placeholder = `Search For ${inp.name}`;
+      // uncheck all others
+      placeBtns.forEach(otherInp => {
+        if (otherInp !== inp) {
+          otherInp.checked = false;
+        }
+      });
+    }else{
+      let searchInput = document.getElementById('searchInput');
+      searchInput.placeholder = 'Search Genesys Map';
+    }
+  });
+});
+
+
+let directionType = document.querySelectorAll('.direction-type button');
+directionType.forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (!btn.classList.contains('direction-button-active')) {
+      btn.classList.add('direction-button-active');
+      // uncheck all others
+      directionType.forEach(otherBtns => {
+        if (otherBtns !== btn) {
+          otherBtns.classList.remove('direction-button-active');
+        }
+      });
+    }else{
+      btn.classList.remove('direction-button-active');
+    }
+  });
+});

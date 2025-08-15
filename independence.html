@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Independence Day Special 🇮🇳</title>
+<meta name="description" content="Celebrate India's Independence Day — history, facts, pledge, and a quick quiz!" />
+<style>
+  :root{
+    --saffron:#FF9933;
+    --white:#FFFFFF;
+    --green:#138808;
+    --navy:#000080;
+    --ink:#1d2433;
+    --muted:#5c6b7a;
+    --bg:#0e1117;
+    --card:#151a23;
+    --ring:#2a3241;
+  }
+  /* Reset-ish */
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    color: #e9eef5;
+    background: radial-gradient(1000px 500px at 50% -200px, #1b2230 0, #0e1117 60%, #0b0e13 100%);
+    line-height:1.6;
+  }
+  a{color:#9ad1ff;text-decoration:none} a:hover{text-decoration:underline}
+  .container{max-width:1100px;margin:auto;padding:20px}
+  header.hero{
+    position:relative;
+    border-radius:18px;
+    overflow:hidden;
+    padding:48px 20px;
+    display:grid;
+    gap:22px;
+    place-items:center;
+    text-align:center;
+    background:
+      linear-gradient(90deg, var(--saffron), var(--white) 35%, var(--white) 65%, var(--green));
+    color:#0f1a2a;
+  }
+  header .title{
+    font-size: clamp(28px, 6vw, 54px);
+    font-weight: 800;
+    letter-spacing:0.5px;
+  }
+  header .subtitle{
+    font-size: clamp(14px, 2.6vw, 18px);
+    max-width: 70ch;
+    color:#0b1320;
+  }
+  .flag-wrap{
+    background: rgba(255,255,255,0.85);
+    border-radius:14px;
+    padding:12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.15);
+  }
+  .grid{
+    display:grid;
+    gap:18px;
+    grid-template-columns: repeat(12, 1fr);
+  }
+  .col-12{grid-column: span 12}
+  .col-6{grid-column: span 6}
+  @media (max-width: 860px){ .col-6{grid-column: span 12} }
+  section.card{
+    background: linear-gradient(180deg, #161c26, #121722);
+    border:1px solid var(--ring);
+    border-radius:16px;
+    padding:18px;
+  }
+  h2{
+    margin:0 0 8px;
+    font-size: 22px;
+    letter-spacing:.2px;
+  }
+  .muted{color:#a9b5c4}
+  ul.timeline{
+    list-style:none; padding:0; margin:12px 0 0;
+  }
+  ul.timeline li{
+    padding:12px 12px;
+    margin:10px 0;
+    border:1px dashed #2c384b;
+    border-radius:12px;
+    background:#121826;
+  }
+  .tag{
+    display:inline-block;
+    padding:2px 10px;
+    border-radius:999px;
+    font-size:12px;
+    background:#0f1522;
+    border:1px solid #2a3346;
+    color:#a6b3c6;
+    margin-left:6px;
+  }
+  .facts{
+    display:grid; gap:14px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width:600px){ .facts{grid-template-columns:1fr} }
+  .fact{
+    background:#101624;
+    border:1px solid #2a3346;
+    border-radius:12px;
+    padding:14px;
+  }
+  .pledge{
+    background:linear-gradient(180deg, rgba(255,153,51,.15), rgba(255,255,255,.06), rgba(19,136,8,.15));
+    border:1px solid #2a3346;
+    border-radius:12px;
+    padding:16px;
+  }
+  .pledge p{margin:0}
+  .btn{
+    display:inline-block;
+    padding:10px 14px;
+    border-radius:10px;
+    border:1px solid #2a3346;
+    background:#0f1626;
+    color:#e9eef5;
+    cursor:pointer;
+    font-weight:600;
+  }
+  .btn:hover{filter:brightness(1.1)}
+  .quiz .q{
+    padding:12px; margin:10px 0;
+    border-radius:12px; border:1px solid #2a3346; background:#0f1522;
+  }
+  .score{font-weight:700}
+  footer{
+    padding:22px 8px; text-align:center; color:#93a2b7
+  }
+
+  /* Simple tricolor confetti */
+  .confetti{
+    pointer-events:none;
+    position:fixed; inset:0; overflow:hidden; z-index:9999;
+  }
+  .confetti i{
+    position:absolute; top:-10px; width:8px; height:14px;
+    opacity:.85;
+    animation: fall linear forwards;
+  }
+  @keyframes fall{
+    to{ transform:translateY(110vh) rotate(720deg); }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <header class="hero">
+      <div class="title">Happy Independence Day</div>
+      <div style="display:flex;flex-direction:column;align-items:center;margin-top:6px;">
+        <span style="font-size:14px;color:#0b1320;">Presented by</span>
+        <img src="genesys.jpeg" alt="Genesys Logo" style="max-width:160px;height:auto;margin-top:4px;">
+      </div>
+      <div class="subtitle">Celebrating India’s freedom and the spirit of unity. Jai Hind! — <strong>15 August</strong></div>
+      <div class="flag-wrap">
+        <!-- Flag SVG -->
+        <svg width="330" height="220" viewBox="0 0 3 2">
+          <rect width="3" height="2" fill="#FF9933"/>
+          <rect y="0.6666" width="3" height="0.6666" fill="#fff"/>
+          <rect y="1.3333" width="3" height="0.6666" fill="#138808"/>
+          <g transform="translate(1.5,1)">
+            <circle r="0.24" fill="none" stroke="#000080" stroke-width="0.03"/>
+            <circle r="0.02" fill="#000080"/>
+            <g stroke="#000080" stroke-width="0.03">
+              <!-- spokes -->
+              <line x1="0" y1="0" x2="0" y2="-0.24" transform="rotate(0)"/>
+              <line x1="0" y1="0" x2="0" y2="-0.24" transform="rotate(15)"/>
+              <line x1="0" y1="0" x2="0" y2="-0.24" transform="rotate(30)"/>
+              <line x1="0" y1="0" x2="0" y2="-0.24" transform="rotate(45)"/>
+              <line x1="0" y1="0" x2="0" y2="-0.24" transform="rotate(60)"/>
+              <line x1="0" y1="0" x2="0" y2="-0.24" transform="rotate(75)"/>
+              <line x1="0" y1="0" x2="0" y2="-0.24" transform="rotate(90)"/>
+              <line x1="0" y1="0" x2="0" y2="-0.24" transform="rotate(105)"/>
+              <line x1="0" y1="0" x2="0" y2="-0.24" transform="rotate(120)"/>
+              <line x1="0" y1="0" x2="0" y2="-0.24" transform="rotate(135)"/>
+              <line x1="0" y1="0" x2="0" y2="-0.24" transform="rotate(150)"/>
+              <line x1="0" y1="0" x2="0" y2="-0.24" transform="rotate(165)"/>
+              <line x1="0" y1="0" x2="0" y2="-0.24" transform="rotate(180)"/>
+              <line x1="0" y1="0" x2="0" y2="-0.24" transform="rotate(195)"/>
+              <line x1="0" y1="0" x2="0" y2="-0.24" transform="rotate(210)"/>
+              <line x1="0" y1="0" x2="0" y2="-0.24" transform="rotate(225)"/>
+              <line x1="0" y1="0" x2="0" y2="-0.24" transform="rotate(240)"/>
+              <line x1="0" y1="0" x2="0" y2="-0.24" transform="rotate(255)"/>
+              <line x1="0" y1="0" x2="0" y2="-0.24" transform="rotate(270)"/>
+              <line x1="0" y1="0" x2="0" y2="-0.24" transform="rotate(285)"/>
+              <line x1="0" y1="0" x2="0" y2="-0.24" transform="rotate(300)"/>
+              <line x1="0" y1="0" x2="0" y2="-0.24" transform="rotate(315)"/>
+              <line x1="0" y1="0" x2="0" y2="-0.24" transform="rotate(330)"/>
+              <line x1="0" y1="0" x2="0" y2="-0.24" transform="rotate(345)"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </header>
+
+    <main class="grid" aria-label="Main content">
+      <section class="card col-6" aria-labelledby="timeline">
+        <h2 id="timeline">Journey to Freedom <span class="tag">1857 → 1947</span></h2>
+        <p class="muted">A few milestones on the long path to independence:</p>
+        <ul class="timeline">
+          <li><strong>1857:</strong> First War of Independence (Sepoy Mutiny).</li>
+          <li><strong>1885:</strong> Indian National Congress founded.</li>
+          <li><strong>1905:</strong> Swadeshi Movement after Bengal Partition.</li>
+          <li><strong>1919:</strong> Jallianwala Bagh tragedy intensifies the struggle.</li>
+          <li><strong>1930:</strong> Dandi March ignites Civil Disobedience.</li>
+          <li><strong>1942:</strong> Quit India Movement calls for immediate independence.</li>
+          <li><strong>15 Aug 1947:</strong> India becomes free; tricolour soars high.</li>
+          <li><strong>26 Jan 1950:</strong> India becomes a Republic, Constitution in effect.</li>
+        </ul>
+      </section>
+
+      <section class="card col-6" aria-labelledby="facts">
+        <h2 id="facts">Quick Facts <span class="tag">Tricolour</span></h2>
+        <div class="facts">
+          <div class="fact"><strong>Flag ratio:</strong> 3:2 (length:height).</div>
+          <div class="fact"><strong>Colours:</strong> Saffron (courage), White (truth), Green (faith & chivalry).</div>
+          <div class="fact"><strong>Chakra:</strong> Navy blue Ashoka Chakra with 24 spokes.</div>
+          <div class="fact"><strong>National anthem:</strong> “Jana Gana Mana”.</div>
+        </div>
+      </section>
+
+      <section class="card col-12" aria-labelledby="pledge">
+        <h2 id="pledge">The Pledge</h2>
+        <div class="pledge">
+          <p>On this Independence Day, I pledge to uphold the values of justice, liberty, equality, and fraternity; to respect our diversity; to serve the nation with honesty and compassion; and to contribute positively to India’s progress.</p>
+        </div>
+      </section>
+
+      <!-- <section class="card col-12 quiz" aria-labelledby="quiz">
+        <h2 id="quiz">Mini Quiz <span class="tag">Test Yourself</span></h2>
+        <div class="q">
+          <p><strong>1)</strong> Who led the Dandi March in 1930?</p>
+          <label><input type="radio" name="q1" value="a"> Subhas Chandra Bose</label><br/>
+          <label><input type="radio" name="q1" value="b"> Bal Gangadhar Tilak</label><br/>
+          <label><input type="radio" name="q1" value="c"> Mahatma Gandhi</label>
+        </div>
+        <div class="q">
+          <p><strong>2)</strong> What is the ratio of the Indian flag?</p>
+          <label><input type="radio" name="q2" value="a"> 2:3</label><br/>
+          <label><input type="radio" name="q2" value="b"> 3:2</label><br/>
+          <label><input type="radio" name="q2" value="c"> 1:1</label>
+        </div>
+        <div class="q">
+          <p><strong>3)</strong> The Ashoka Chakra has how many spokes?</p>
+          <label><input type="radio" name="q3" value="a"> 12</label><br/>
+          <label><input type="radio" name="q3" value="b"> 24</label><br/>
+          <label><input type="radio" name="q3" value="c"> 36</label>
+        </div>
+        <button class="btn" id="checkBtn" type="button" aria-label="Check answers">Check Answers</button>
+        <p class="muted">Score: <span class="score" id="score">0/3</span> <span id="remark"></span></p>
+      </section> -->
+    </main>
+
+    <footer>
+      Made with ❤️ for 15 August. Jai Hind!
+    </footer>
+  </div>
+
+  <!-- Confetti container -->
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+<script>
+  // Quiz logic
+  const answers = { q1:'c', q2:'b', q3:'b' };
+  const scoreEl = document.getElementById('score');
+  const remarkEl = document.getElementById('remark');
+  document.getElementById('checkBtn').addEventListener('click', () => {
+    let score = 0;
+    for (const k of Object.keys(answers)) {
+      const selected = document.querySelector(`input[name="${k}"]:checked`);
+      if (selected && selected.value === answers[k]) score++;
+    }
+    scoreEl.textContent = `${score}/3`;
+    remarkEl.textContent = score === 3 ? "• Excellent! 🇮🇳" : score === 2 ? "• Great!" : "• Keep learning!";
+    if (score === 3) launchConfetti();
+  });
+
+  // Lightweight tricolor confetti (no libs)
+  function launchConfetti(){
+    const box = document.getElementById('confetti');
+    box.innerHTML = ''; // reset
+    const colors = ['#FF9933', '#FFFFFF', '#138808'];
+    const pieces = 140;
+    for (let i = 0; i < pieces; i++){
+      const el = document.createElement('i');
+      el.style.left = Math.random()*100 + 'vw';
+      el.style.background = colors[i % colors.length];
+      el.style.transform = `translateY(0) rotate(${Math.random()*360}deg)`;
+      el.style.animationDuration = (5 + Math.random()*3) + 's';
+      el.style.animationDelay = (Math.random()*0.75) + 's';
+      el.style.width = (6 + Math.random()*5) + 'px';
+      el.style.height = (10 + Math.random()*8) + 'px';
+      box.appendChild(el);
+    }
+    // auto clear after 8s
+    setTimeout(()=> box.innerHTML = '', 8000);
+  }
+
+  // Keyboard: press Enter on button
+  document.getElementById('checkBtn').addEventListener('keyup', (e)=>{
+    if(e.key === 'Enter') e.target.click();
+  });
+</script>
+</body>
+</html>

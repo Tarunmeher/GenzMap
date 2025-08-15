@@ -142,12 +142,13 @@
     position: absolute;
     top:0;
     height: 100vh;
-    padding: 10px;
+    padding: 20px;
     border-radius: 10px;
     width: 400px;
     z-index: 2;
     background-color: white;
     box-shadow: 0px 0px 10px gray;
+    display: none;
 }
 .direction-type{
     margin-top: 20px;
@@ -156,15 +157,65 @@
     display: flex;
     justify-content: space-around;
 }
+
 .direction-type button{
-    padding:10px 15px;
+    padding:7px 12px;
     font-size: 1.5rem;
     cursor: pointer;
     background-color: white;
     border: none;
     border-radius:5px;
     box-shadow: 0px 0px 5px rgb(174, 174, 174);
+    color: rgb(93, 93, 93);
 }
 .direction-type button:hover{
     background-color: rgba(174, 174, 174, 0.2);
+}
+
+#direction-container-close{
+    font-weight: bold;text-align: right;padding: 5px;cursor: pointer;
+}
+
+.direction-inputs{
+    margin-top: 50px !important;
+    width: 100%;
+    height: 400px;
+    padding:5px 0px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 4px rgb(174,174,174);
+    margin: auto;
+}
+.direction-inputs .inputs{
+    width:70%;
+    margin: auto;
+    border-radius: 5px;
+    padding:10px 5px 10px 2px;
+}
+.direction-inputs .inputs input{
+    width:80%;
+    padding:10px;
+    font-size: 1rem;
+    border-radius: 7px;
+    border: none;
+    box-shadow: 0px 0px 4px rgb(174,174,174);
+    color:gray;
+}
+.direction-button-active{
+    background-color: #348cff !important;
+    color: white !important;
+}
+.inputs .bi{
+    cursor: pointer;
+}
+input:focus{
+    outline: none;
+}
+.other-options{
+    text-align: right;
+    margin-top: 160px;
+    padding: 15px;
+    font-size: 1.2rem;
+}
+.other-options i{
+    cursor: pointer;
 }

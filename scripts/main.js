@@ -127,6 +127,16 @@ const {
     path_traching
 } = mt.createUtilityButtons(map);
 
+direction_search_button.onclick = () =>{
+  document.getElementById('direction-container').style.display="block";
+  document.getElementById('genz-places-search').style.display="none";
+}
+
+document.getElementById('direction-container-close').addEventListener('click', ()=>{
+  document.getElementById('direction-container').style.display="none";
+  document.getElementById('genz-places-search').style.display="flex";
+});
+
 layer_button.onclick = () =>{
     let utilityButtonsStyle = utilityButtonContainer.style;
     if(utilityButtonsStyle.display=='none' || utilityButtonsStyle.display==''){

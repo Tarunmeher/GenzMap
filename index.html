@@ -63,50 +63,66 @@
         </div>
 	</div>
 
-    <div class="genz-place-buttons">
-            <input type="checkbox" id="accommodation" name="mapOption" value="accommodation">
+    <div class="genz-place-buttons" id="genz-places-search">
+            <input type="checkbox" id="accommodation" name="Hotel" value="accommodation">
             <label for="accommodation" class="place">
-                    <i class="fa-solid fa-hotel icon"></i> Hotels
+                    <i class="bi bi-buildings-fill icon"></i> Hotels
             </label>
-
-            <input type="checkbox" id="food" name="mapOption" value="food">
+            <input type="checkbox" id="food" name="Restaurants" value="food">
             <label for="food" class="place">
-                    <i class="fa-solid fa-utensils icon"></i> Restaurants
+                    <i class="bi bi-fork-knife icon"></i> Restaurants
             </label>
-
-            <input type="checkbox" id="transport:fuel" name="mapOption" value="transport:fuel">
+            <input type="checkbox" id="transport:fuel" name="Petrol Pumps" value="transport:fuel">
             <label for="transport:fuel" class="place">
-                    <i class="fa-solid fa-gas-pump icon"></i> Petrol Pumps
+                    <i class="bi bi-fuel-pump-fill icon"></i> Petrol Pumps
             </label>
-
-            <input type="checkbox" id="transport:ev" name="mapOption" value="transport:ev">
+            <input type="checkbox" id="transport:ev" name="EV Charging" value="transport:ev">
             <label for="transport:ev" class="place">
-                    <i class="fa-solid fa-charging-station icon"></i> EV Charging
+                    <i class="bi bi-ev-station-fill icon"></i> EV Charging
             </label>
-
-            <input type="checkbox" id="finance:atm" name="mapOption" value="finance:atm">
+            <input type="checkbox" id="finance:atm" name="ATM" value="finance:atm">
             <label for="finance:atm" class="place">
-                    <i class="fa-solid fa-indian-rupee-sign icon"></i> ATM
+                    <i class="bi bi-currency-rupee icon"></i>ATM
             </label>
-
-            <input type="checkbox" id="retail" name="mapOption" value="retail">
+            <input type="checkbox" id="retail" name="Shopping" value="retail">
             <label for="retail" class="place">
-                    <i class="fa-solid fa-cart-shopping icon"></i> Shopping
+                    <i class="bi bi-cart-fill icon"></i> Shopping
             </label>
-
         </div>
 
-        <div class="direction-container">
-            <div class="direction-container-header" style="font-weight: bold;text-align: right;padding: 5px;">
+        <div class="direction-container" id="direction-container">
+            <div class="direction-container-header" id="direction-container-close">
                 <i class="bi bi-x-lg" ></i>
             </div>
             <div class="direction-type">
-                <button><i class="bi bi-person-walking"></i></button>
-                <button><i class="bi bi-bicycle"></i></button>
-                <button><i class="bi bi-car-front"></i></button>
-                <button><i class="bi bi-bus-front"></i></button>
-                <button><i class="bi bi-truck-front"></i></button>
+                <button title="Walk"><i class="bi bi-person-walking"></i></button>
+                <button title="Two Wheeler"><i class="bi bi-bicycle"></i></button>
+                <button title="Car"><i class="bi bi-car-front"></i></button>
+                <button title="Bus"><i class="bi bi-bus-front"></i></button>
+                <button title="Truck"><i class="bi bi-truck-front"></i></button>
             </div>
+
+            <div class="direction-inputs">
+                <br><br>
+                <div class="inputs">
+                    <input type="text" id="longitude-inputs" placeholder="Place Name">
+                    <i class="bi bi-x-lg" ></i>
+                </div>
+                <div class="inputs" style="text-align: center;">
+                    <i class="bi bi-arrow-down-up"></i>
+                </div>
+                <div class="inputs">
+                    <input type="text" id="latitude-inputs" placeholder="Place Name">
+                    <i class="bi bi-x-lg" ></i>
+                </div>
+
+                <div class="other-options">
+                    <i class="bi bi-info-circle" ></i> &nbsp; 
+                    <i class="bi bi-bezier2" ></i> &nbsp; 
+                    <i class="bi bi-crosshair" ></i> &nbsp; 
+                </div>
+            </div>
+            
         </div>
 	<!-- <button class="app-features"><i class="bi bi-grid-3x3-gap-fill"></i></button> -->
 	<script src="scripts/main.js" type="module" defer></script>
